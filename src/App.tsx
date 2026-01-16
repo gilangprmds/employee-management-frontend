@@ -20,6 +20,15 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import PrivateRoute from "./routes/PrivateRoute";
 import AuthRoute from "./routes/AuthRoute";
+import UserManagement from "./pages/Employee/EmployeeManagement";
+import AttendanceCalendarView from "./pages/Attendance";
+import AttendanceRecordsPage from "./pages/AttendanceRecords";
+import Attendance2 from "./pages/ListAttendance";
+import Home2 from "./pages/Dashboard/Home2";
+import EmployeeProfile from "./pages/Employee/EmployeeProfile";
+import AddEmployee from "./pages/Employee/AddEmployee";
+import RoleManagement from "./pages/RoleManagement";
+import PermissionManagement from "./pages/PermissionManagement";
 
 export default function App() {
   return (
@@ -28,24 +37,51 @@ export default function App() {
 
       <Routes>
         {/* ==== PUBLIC ROUTES ==== */}
-        <Route path="/signin" element={
-          <AuthRoute>
-            <SignIn />
-          </AuthRoute>
-          } />
-        <Route path="/signup" element={
-          <AuthRoute>
-            <SignUp />
-          </AuthRoute>
-          } />
+        <Route
+          path="/signin"
+          element={
+            <AuthRoute>
+              <SignIn />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <AuthRoute>
+              <SignUp />
+            </AuthRoute>
+          }
+        />
 
         {/* ==== PROTECTED ROUTES ==== */}
         <Route element={<PrivateRoute />}>
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
+            <Route index path="/dashboard2" element={<Home2 />} />
 
             {/* Others */}
             <Route path="/profile" element={<UserProfiles />} />
+
+            <Route path="/manajemen-karyawan" element={<UserManagement />} />
+            <Route
+              path="/manajemen-karyawan/:id"
+              element={<EmployeeProfile />}
+            />
+            <Route
+              path="/manajemen-karyawan/tambah"
+              element={<AddEmployee />}
+            />
+
+            <Route path="/attendance" element={<AttendanceCalendarView />} />
+            <Route path="/attendance2" element={<Attendance2 />} />
+            <Route
+              path="/attendance-records"
+              element={<AttendanceRecordsPage />}
+            />
+
+            <Route path="/role" element={<RoleManagement />} />
+            <Route path="/permission" element={<PermissionManagement />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
 

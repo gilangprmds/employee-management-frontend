@@ -15,14 +15,14 @@ export default function SignInForm() {
     const { login } = useAuth();
   const nav = useNavigate();
 
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
-      await login(username, password);
+      await login(email, password);
       nav("/", { replace: true });
     } catch (err) {
       alert("Login gagal");
@@ -106,12 +106,12 @@ export default function SignInForm() {
               <div className="space-y-6">
                 <div>
                   <Label>
-                    Username <span className="text-error-500">*</span>{" "}
+                    email <span className="text-error-500">*</span>{" "}
                   </Label>
                   <Input 
-                  placeholder="username1"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)} />
+                  placeholder="email1"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
                   <Label>
@@ -151,7 +151,7 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm">
+                  <Button className="w-full" size="sm" type="submit">
                     Sign in
                   </Button>
                 </div>

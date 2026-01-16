@@ -1,102 +1,130 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import api from "../api/axios";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+import { setAccessToken } from "../api/token";
+import authApi from "../api/auth.Api";
 
-// ==============================
-// 🧩 Type Definitions
-// ==============================
-
-// Tipe User sesuai kebutuhan aplikasi kamu
-export interface User {
-  username: string;
-  roles?: string[];
+interface User {
+  userId: number;
+  email: string;
+  fullName: string;
+  role: string[];
+  permissions: string[];
+  department?: string;
+  profileImageUrl: string;
 }
 
-// Response login API
-interface LoginResponse {
+interface AuthResponse {
+  userId: number;
+  email: string;
+  fullName: string;
+  department?: string;
+  roles: string[];
+  permissions: string[];
   accessToken: string;
-  user: User;
+  tokenType: string;
+  expiresIn: number;
+  profileImageUrl: string;
 }
 
-// Response refresh API
-interface RefreshResponse {
-  accessToken: string;
-  user: User;
-}
-
-// Context Value Type
 interface AuthContextValue {
   user: User | null;
-  accessToken: string | null;
-  login: (username: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
   loading: boolean;
   isLoggedIn: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  hasPermission: (permissionName: string) => boolean;
+  hasAnyPermission: (permissions: string[]) => boolean;
+  hasRole: (roleCode: string) => boolean;
+  hasAnyRole: (roles: string[]) => boolean;
 }
 
-// Props untuk Provider
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-// ==============================
-// 🔥 Create Context
-// ==============================
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-// ==============================
-// 🔥 Auth Provider Component
-// ==============================
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Axios interceptor (updated when token changes)
+  // =======================
+  // INITIAL SESSION CHECK
+  // =======================
   useEffect(() => {
-    const interceptor = api.interceptors.request.use((config) => {
-      if (accessToken && config.headers) {
-        config.headers.Authorization = `Bearer ${accessToken}`;
-      }
-      return config;
-    });
-
-    return () => {
-      api.interceptors.request.eject(interceptor);
-    };
-  }, [accessToken]);
-
-  // AUTO LOGIN (refresh session)
-  useEffect(() => {
-    async function refreshSession() {
+    async function initAuth() {
       try {
-        const res = await api.post<RefreshResponse>("/auth/refresh");
+        const res = await authApi.post<AuthResponse>("/api/auth/refresh");
         setAccessToken(res.data.accessToken);
-        setUser(res.data.user);
+        setUser({
+          userId: res.data.userId,
+          email: res.data.email,
+          fullName: res.data.fullName,
+          department: res.data.department,
+          role: res.data.roles,
+          permissions: res.data.permissions,
+          profileImageUrl: res.data.profileImageUrl,
+        });
       } catch {
-        setUser(null);
         setAccessToken(null);
+        setUser(null);
       } finally {
         setLoading(false);
       }
     }
 
-    refreshSession();
+    initAuth();
   }, []);
 
-  // LOGIN FUNCTION
-  async function login(username: string, password: string) {
-    const res = await api.post<LoginResponse>("/auth/login", {
-      username,
+  // =======================
+  // LOGIN
+  // =======================
+  async function login(email: string, password: string) {
+    const res = await authApi.post<AuthResponse>("/api/auth/login", {
+      email,
       password,
     });
 
     setAccessToken(res.data.accessToken);
-    setUser(res.data.user);
+    setUser({
+      userId: res.data.userId,
+      email: res.data.email,
+      fullName: res.data.fullName,
+      department: res.data.department,
+      role: res.data.roles,
+      permissions: res.data.permissions,
+      profileImageUrl: res.data.profileImageUrl,
+    });
   }
 
-  // LOGOUT FUNCTION
+  const hasPermission = (permissionName: string): boolean => {
+    if (!user) return false;
+    return user.permissions.includes(permissionName);
+  };
+
+  const hasAnyPermission = (permissions: string[]): boolean => {
+    if (!user) return false;
+    return permissions.some((permission) =>
+      user.permissions.includes(permission)
+    );
+  };
+
+  const hasRole = (roleCode: string): boolean => {
+    if (!user) return false;
+    return user.role.includes(roleCode);
+  };
+
+  const hasAnyRole = (roles: string[]): boolean => {
+    if (!user) return false;
+    return roles.some((role) => user.role.includes(role));
+  };
+
+  // =======================
+  // LOGOUT
+  // =======================
   async function logout() {
-    await api.post("/auth/logout");
+    await authApi.post("/api/auth/logout");
     setAccessToken(null);
     setUser(null);
   }
@@ -105,11 +133,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     <AuthContext.Provider
       value={{
         user,
-        accessToken,
-        login,
-        logout,
         loading,
         isLoggedIn: !!user,
+        login,
+        logout,
+        hasPermission,
+        hasAnyPermission,
+        hasRole,
+        hasAnyRole,
       }}
     >
       {children}
@@ -117,15 +148,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   );
 }
 
-// ==============================
-// 🔥 Custom Hook
-// ==============================
 export function useAuth() {
-  const context = useContext(AuthContext);
-
-  if (!context) {
-    throw new Error("useAuth must be used inside <AuthProvider>");
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    throw new Error("useAuth must be used within AuthProvider");
   }
-
-  return context;
+  return ctx;
 }

@@ -14,6 +14,7 @@ import {
   PlugInIcon,
   TableIcon,
   UserCircleIcon,
+  UserIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import SidebarWidget from "./SidebarWidget";
@@ -29,7 +30,7 @@ const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Dashboard",
-    path: "/"
+    path: "/",
     // subItems: [{ name: "Ecommerce", path: "/", pro: false }],
   },
   {
@@ -41,6 +42,26 @@ const navItems: NavItem[] = [
     icon: <UserCircleIcon />,
     name: "User Profile",
     path: "/profile",
+  },
+  {
+    icon: <UserIcon />,
+    name: "Manajemen Karyawan",
+    path: "/manajemen-karyawan",
+  },
+  {
+    icon: <UserIcon />,
+    name: "Daftar Kehadiran",
+    path: "/attendance2",
+  },
+  {
+    icon: <UserIcon />,
+    name: "Attendance Records Exmpl",
+    path: "/attendance-records",
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Attendance Calendar",
+    path: "/attendance",
   },
   {
     name: "Forms",
@@ -108,7 +129,15 @@ const AppSidebar: React.FC = () => {
 
   // const isActive = (path: string) => location.pathname === path;
   const isActive = useCallback(
-    (path: string) => location.pathname === path,
+    (path: string) => {
+      if (path === "/") return location.pathname === "/";
+
+      // Memastikan kecocokan utuh atau diikuti oleh '/'
+      // Contoh: /employee cocok dengan /employee/123 tapi tidak dengan /employee-salary
+      return (
+        location.pathname === path || location.pathname.startsWith(`${path}/`)
+      );
+    },
     [location.pathname]
   );
 

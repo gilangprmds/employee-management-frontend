@@ -3,7 +3,7 @@ import authApi from "./auth.Api";
 import { getAccessToken, setAccessToken } from "./token";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   withCredentials: true, // WAJIB untuk refresh token cookie
 });
 

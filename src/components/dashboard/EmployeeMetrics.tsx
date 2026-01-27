@@ -2,8 +2,8 @@ import { DashboardStats } from "../../api/dashboardApi";
 import {
   UsersIcon,
   UserCheckIcon,
-  UserPlusIcon,
-  CalendarIcon,
+  // UserPlusIcon,
+  // CalendarIcon,
   TrendingUpIcon,
   TrendingDownIcon,
   ClockIcon

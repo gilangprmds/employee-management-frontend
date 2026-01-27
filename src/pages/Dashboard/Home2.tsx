@@ -1,14 +1,19 @@
 import EmployeeMetrics from "../../components/dashboard/EmployeeMetrics";
-import AttendanceChart from "../../components/dashboard/AttendanceChart";
 import DepartmentStats from "../../components/dashboard/DepartmentStats";
-import RecruitmentTarget from "../../components/dashboard/RecruitmentTarget";
+// import RecruitmentTarget from "../../components/dashboard/RecruitmentTarget";
 import RecentEmployees from "../../components/dashboard/RecentEmployees";
-import LeaveDistribution from "../../components/dashboard/LeaveDistribution";
+// import LeaveDistribution from "../../components/dashboard/LeaveDistribution";
 import PageMeta from "../../components/common/PageMeta";
-import { useEffect, useState } from "react";
-import { PaginationUserData, userApi } from "../../api/userApi";
-import { dashboardApi, DashboardStats } from "../../api/dashboardApi";
-import AttendanceChart2 from "../../components/dashboard/AttendanceChart2";
+import { 
+  // useEffect,
+  useState
+ } from "react";
+// import { PaginationUserData, userApi } from "../../api/userApi";
+import { 
+  // dashboardApi,
+  DashboardStats 
+} from "../../api/dashboardApi";
+import AttendanceChart from "../../components/dashboard/AttendanceChart";
 
 export default function EmployeeDashboard() {
   // const [loading, setLoading] = useState(true);
@@ -85,7 +90,7 @@ export default function EmployeeDashboard() {
             <EmployeeMetrics stats={stats} />
             
             {/* Attendance Chart */}
-            <AttendanceChart2 />
+            <AttendanceChart />
           </div>
 
           {/* Right Column */}

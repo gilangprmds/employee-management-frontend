@@ -28,9 +28,9 @@ export default function DepartmentStats() {
       position: "bottom",
       horizontalAlign: "center",
       fontSize: "12px",
-      markers: {
-        radius: 12,
-      },
+      // markers: {
+      //   radius: 12,
+      // },
       itemMargin: {
         horizontal: 10,
         vertical: 5,

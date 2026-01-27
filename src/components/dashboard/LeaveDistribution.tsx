@@ -27,9 +27,9 @@ export default function LeaveDistribution() {
     legend: {
       position: "bottom",
       fontSize: "12px",
-      markers: {
-        radius: 6,
-      },
+      // markers: {
+      //   radius: 6,
+      // },
     },
     plotOptions: {
       pie: {

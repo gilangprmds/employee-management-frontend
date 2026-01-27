@@ -3,16 +3,16 @@ import { Link, useLocation } from "react-router";
 
 // Assume these icons are imported from an icon library
 import {
-  BoxCubeIcon,
-  CalenderIcon,
+  // BoxCubeIcon,
+  // CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
+  // ListIcon,
+  // PageIcon,
+  // PieChartIcon,
+  // PlugInIcon,
+  // TableIcon,
   UserCircleIcon,
   UserIcon,
 } from "../icons";
@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
   {
     icon: <UserIcon />,
     name: "Kehadiran",
-    path: "/attendance2",
+    path: "/attendance",
   },
   {
     icon: <UserIcon />,

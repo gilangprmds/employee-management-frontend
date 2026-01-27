@@ -5,7 +5,10 @@ import PageMeta from "../../components/common/PageMeta";
 import Button from "../../components/ui/button/Button";
 import Label from "../../components/form/Label";
 import Input from "../../components/form/input/InputField";
-import { userApi, User, CreateUserPayload } from "../../api/userApi";
+import { 
+  userApi, 
+  // User, 
+  CreateUserPayload } from "../../api/userApi";
 
 export default function AddEmployee() {
   const navigate = useNavigate();

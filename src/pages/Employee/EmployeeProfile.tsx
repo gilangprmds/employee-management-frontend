@@ -1,7 +1,7 @@
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import UserMetaCard from "../../components/UserProfile/UserMetaCard";
-import UserInfoCard from "../../components/UserProfile/UserInfoCard";
-import UserAddressCard from "../../components/UserProfile/UserAddressCard";
+// import UserMetaCard from "../../components/UserProfile/UserMetaCard";
+// import UserInfoCard from "../../components/UserProfile/UserInfoCard";
+// import UserAddressCard from "../../components/UserProfile/UserAddressCard";
 import PageMeta from "../../components/common/PageMeta";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
@@ -14,11 +14,11 @@ import { useModal } from "../../hooks/useModal";
 
 export default function EmployeeProfile() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // 1. Definisikan state untuk data, loading, dan error
   const [data, setData] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   // --- STATE UNTUK FORM EDIT ---
@@ -32,7 +32,7 @@ export default function EmployeeProfile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
+        // setLoading(true);
         const userData = await userApi.getUserById(Number(id));
         setData(userData);
         // Inisialisasi formData dengan data yang baru di-fetch
@@ -40,7 +40,7 @@ export default function EmployeeProfile() {
       } catch (err) {
         setError(err as Error);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     fetchData();
@@ -390,7 +390,7 @@ export default function EmployeeProfile() {
                     <Input
                       name="bio"
                       type="text"
-                      value={formData.bio || ""}
+                      // value={formData.bio || ""}
                       onChange={handleInputChange}
                     />
                   </div>

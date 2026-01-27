@@ -106,18 +106,18 @@ export default function RecentEmployees() {
     });
   };
 
-  const getStatusColor = (status: Employee["status"]) => {
-    switch (status) {
-      case "Active":
-        return "success";
-      case "Probation":
-        return "warning";
-      case "Onboarding":
-        return "info";
-      default:
-        return "default";
-    }
-  };
+  // const getStatusColor = (status: Employee["status"]) => {
+  //   switch (status) {
+  //     case "Active":
+  //       return "success";
+  //     case "Probation":
+  //       return "warning";
+  //     case "Onboarding":
+  //       return "info";
+  //     default:
+  //       return "default";
+  //   }
+  // };
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900">

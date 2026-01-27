@@ -21,14 +21,13 @@ import Home from "./pages/Dashboard/Home";
 import PrivateRoute from "./routes/PrivateRoute";
 import AuthRoute from "./routes/AuthRoute";
 import UserManagement from "./pages/Employee/EmployeeManagement";
-import AttendanceCalendarView from "./pages/Attendance";
-import AttendanceRecordsPage from "./pages/AttendanceRecords";
-import Attendance2 from "./pages/ListAttendance";
 import Home2 from "./pages/Dashboard/Home2";
 import EmployeeProfile from "./pages/Employee/EmployeeProfile";
 import AddEmployee from "./pages/Employee/AddEmployee";
 import RoleManagement from "./pages/RoleManagement";
 import PermissionManagement from "./pages/PermissionManagement";
+import Attendance from "./pages/Attendance";
+import EmployeeDashboard from "./pages/Dashboard/Home2";
 
 export default function App() {
   return (
@@ -57,8 +56,8 @@ export default function App() {
         {/* ==== PROTECTED ROUTES ==== */}
         <Route element={<PrivateRoute />}>
           <Route element={<AppLayout />}>
-            <Route index path="/" element={<Home />} />
-            <Route index path="/dashboard2" element={<Home2 />} />
+            <Route index path="/" element={<EmployeeDashboard />} />
+            <Route index path="/dashboard2" element={<Home />} />
 
             {/* Others */}
             <Route path="/profile" element={<UserProfiles />} />
@@ -73,12 +72,7 @@ export default function App() {
               element={<AddEmployee />}
             />
 
-            <Route path="/attendance" element={<AttendanceCalendarView />} />
-            <Route path="/attendance2" element={<Attendance2 />} />
-            <Route
-              path="/attendance-records"
-              element={<AttendanceRecordsPage />}
-            />
+            <Route path="/attendance" element={<Attendance />} />
 
             <Route path="/role-permission" element={<RoleManagement />} />
             <Route path="/permission" element={<PermissionManagement />} />

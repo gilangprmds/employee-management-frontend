@@ -3,7 +3,7 @@ import UserMetaCard from "../components/UserProfile/UserMetaCard";
 import UserInfoCard from "../components/UserProfile/UserInfoCard";
 import UserAddressCard from "../components/UserProfile/UserAddressCard";
 import PageMeta from "../components/common/PageMeta";
-import { useParams, useNavigate } from "react-router-dom";
+// import { useParams, useNavigate } from "react-router-dom";
 
 
 export default function UserProfiles() {

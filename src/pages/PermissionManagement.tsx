@@ -33,7 +33,7 @@ const SCOPES = ["ALL", "SELF", "TEAM", "DEPARTMENT", "COMPANY"];
 const CATEGORIES = ["HR", "PAYROLL", "ATTENDANCE", "RECRUITMENT", "TRAINING", "SYSTEM"];
 
 const PermissionManagement: React.FC = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [permissions, setPermissions] = useState<Permission[]>([]);
   
   // UI States

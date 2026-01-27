@@ -17,7 +17,7 @@ import permissionApi from "../api/permissionApi";
 import { Role, Permission } from "../api/roleTypes";
 
 const RoleManagement: React.FC = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [roles, setRoles] = useState<Role[]>([]);
   const [permissions, setPermissions] = useState<Permission[]>([]);
   
@@ -135,15 +135,15 @@ const RoleManagement: React.FC = () => {
   };
 
   // Group permissions logic
-  const groupedPermissions = permissions.reduce(
-    (acc, permission) => {
-      const category = permission.category || "General";
-      if (!acc[category]) acc[category] = [];
-      acc[category].push(permission);
-      return acc;
-    },
-    {} as Record<string, Permission[]>
-  );
+  // const groupedPermissions = permissions.reduce(
+  //   (acc, permission) => {
+  //     const category = permission.category || "General";
+  //     if (!acc[category]) acc[category] = [];
+  //     acc[category].push(permission);
+  //     return acc;
+  //   },
+  //   {} as Record<string, Permission[]>
+  // );
 
   // Fungsi untuk mengelompokkan permission berdasarkan modul
   const permissionsByModule = useMemo(() => {

@@ -11,7 +11,7 @@ import {
   FiFilter,
   FiX
 } from "react-icons/fi";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import PermissionGuard from "../components/permission/PermissionGuard";
 import permissionApi from "../api/permissionApi";
 import { Permission } from "../api/roleTypes";

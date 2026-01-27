@@ -3,7 +3,10 @@ import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 // import UserInfoCard from "../../components/UserProfile/UserInfoCard";
 // import UserAddressCard from "../../components/UserProfile/UserAddressCard";
 import PageMeta from "../../components/common/PageMeta";
-import { useParams, useNavigate } from "react-router-dom";
+import { 
+  useParams,
+  // useNavigate
+ } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { User, userApi } from "../../api/userApi";
 import { Modal } from "../../components/ui/modal";

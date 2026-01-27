@@ -17,7 +17,9 @@ import AttendanceChart from "../../components/dashboard/AttendanceChart";
 
 export default function EmployeeDashboard() {
   // const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [stats
+    // , setStats
+  ] = useState<DashboardStats | null>(null);
   // const [error, setError] = useState<Error | null>(null);
 
   // useEffect(() => {

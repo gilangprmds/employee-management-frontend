@@ -21,7 +21,6 @@ import Home from "./pages/Dashboard/Home";
 import PrivateRoute from "./routes/PrivateRoute";
 import AuthRoute from "./routes/AuthRoute";
 import UserManagement from "./pages/Employee/EmployeeManagement";
-import Home2 from "./pages/Dashboard/Home2";
 import EmployeeProfile from "./pages/Employee/EmployeeProfile";
 import AddEmployee from "./pages/Employee/AddEmployee";
 import RoleManagement from "./pages/RoleManagement";

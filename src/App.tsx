@@ -80,7 +80,7 @@ export default function App() {
               element={<AttendanceRecordsPage />}
             />
 
-            <Route path="/role" element={<RoleManagement />} />
+            <Route path="/role-permission" element={<RoleManagement />} />
             <Route path="/permission" element={<PermissionManagement />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />

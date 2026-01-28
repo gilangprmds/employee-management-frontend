@@ -220,8 +220,8 @@ export default function UserManagement() {
   return (
     <>
       <PageMeta
-        title="React.js Profile Dashboard | TailAdmin - Next.js Admin Dashboard Template"
-        description="This is React.js Profile Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        title="Employee Management | Employee Attendance Dashboard"
+        description="Employee management page"
       />
       <PageBreadcrumb pageTitle="Managemen Karyawan" pageCrumb="Managemen Karyawan" />
       {/* <ComponentCard>

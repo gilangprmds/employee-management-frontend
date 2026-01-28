@@ -126,8 +126,8 @@ export default function EmployeeProfile() {
   return (
     <>
       <PageMeta
-        title="React.js Profile Dashboard | TailAdmin - Next.js Admin Dashboard Template"
-        description="This is React.js Profile Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        title="Employee Profile | Employee Attendance Dashboard"
+        description="Employee profile page"
       />
       <PageBreadcrumb
         pageTitle="Employee Profile"

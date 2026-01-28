@@ -87,7 +87,7 @@ export default function AddEmployee() {
   return (
     <>
       <PageMeta
-        title="Add Employee | Dashboard Admin"
+        title="Add Employee | Employee Attendance Dashboard"
         description="Tambah karyawan baru"
       />
       <PageBreadcrumb

@@ -69,7 +69,7 @@ export default function EmployeeDashboard() {
   return (
     <>
       <PageMeta
-        title="HRIS Dashboard | Employee Management System"
+        title="Employee Dashboard | Employee Attendance Dashboard"
         description="Employee Management System Dashboard - Overview of HR metrics and analytics"
       />
       

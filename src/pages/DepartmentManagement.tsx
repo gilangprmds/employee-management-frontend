@@ -161,7 +161,7 @@ const DepartmentManagement: React.FC = () => {
       setIsSubmitting(true);
       
       // Find manager name for display
-      const selectedManager = employees.find(emp => emp.id === formData.managerId);
+    //   const selectedManager = employees.find(emp => emp.id === formData.managerId);
     //   const managerData = selectedManager ? {
     //     id: selectedManager.id,
     //     name: selectedManager.fullName,

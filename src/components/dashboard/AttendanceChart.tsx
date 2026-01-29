@@ -117,7 +117,7 @@ export default function AttendanceChart() {
             onClick={() => setViewMode("weekly")}
             className={`px-5 py-2 text-sm font-semibold rounded-lg transition-all ${
               viewMode === "weekly"
-                ? "bg-white dark:bg-gray-700 text-blue-600 shadow-sm"
+                ? "bg-white dark:bg-gray-700 text-emerald-600 dark:text-emerald-500 shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -127,7 +127,7 @@ export default function AttendanceChart() {
             onClick={() => setViewMode("monthly")}
             className={`px-5 py-2 text-sm font-semibold rounded-lg transition-all ${
               viewMode === "monthly"
-                ? "bg-white dark:bg-gray-700 text-blue-600 shadow-sm"
+                ? "bg-white dark:bg-gray-700 text-emerald-600 dark:text-emerald-500 shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >

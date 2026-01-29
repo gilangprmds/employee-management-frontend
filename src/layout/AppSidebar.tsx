@@ -13,11 +13,11 @@ import {
   // PieChartIcon,
   // PlugInIcon,
   // TableIcon,
-  UserCircleIcon,
-  UserIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import SidebarWidget from "./SidebarWidget";
+import { CalendarCheck, UserCog, Users } from "lucide-react";
+import { BuildingOfficeIcon } from "../icons/icons2";
 
 type NavItem = {
   name: string;
@@ -44,17 +44,22 @@ const navItems: NavItem[] = [
   //   path: "/profile",
   // },
   {
-    icon: <UserIcon />,
-    name: "Kehadiran",
+    icon: <CalendarCheck />,
+    name: "Attendance",
     path: "/attendance",
   },
   {
-    icon: <UserIcon />,
-    name: "Manajemen Karyawan",
-    path: "/manajemen-karyawan",
+    icon: <Users />,
+    name: "Employee",
+    path: "/employee",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <BuildingOfficeIcon />,
+    name: "Department",
+    path: "/department",
+  },
+  {
+    icon: <UserCog />,
     name: "Role & Permission",
     path: "/role-permission",
   },
@@ -128,7 +133,7 @@ const AppSidebar: React.FC = () => {
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
+    {},
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -143,7 +148,7 @@ const AppSidebar: React.FC = () => {
         location.pathname === path || location.pathname.startsWith(`${path}/`)
       );
     },
-    [location.pathname]
+    [location.pathname],
   );
 
   useEffect(() => {
@@ -229,7 +234,7 @@ const AppSidebar: React.FC = () => {
                   className={`ml-auto w-5 h-5 transition-transform duration-200 ${
                     openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
-                      ? "rotate-180 text-brand-500"
+                      ? "rotate-180 text-emerald-600"
                       : ""
                   }`}
                 />

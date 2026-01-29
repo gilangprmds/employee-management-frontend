@@ -240,7 +240,7 @@ export default function Attendance() {
       }
     } catch (err: any) {
       setError(
-        err.message || "Terjadi kesalahan saat memproses data dari backend."
+        err.message || "Terjadi kesalahan saat memproses data dari backend.",
       );
     } finally {
       setLoading(false);
@@ -305,7 +305,7 @@ export default function Attendance() {
                     onClick={() => handleQuickDateSelect(option.value)}
                     className={`px-3 py-1.5 text-sm rounded-lg shadow-theme-xs border focus:outline-hidden focus:ring-3 ${
                       isActive
-                        ? "bg-brand-500 text-white border-brand-500 hover:bg-brand-600"
+                        ? "bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700"
                         : "bg-transparent text-gray-800 border-gray-300 hover:bg-gray-50 dark:bg-gray-900 dark:text-white/90 dark:border-gray-700 dark:hover:bg-gray-800"
                     }`}
                   >
@@ -358,8 +358,8 @@ export default function Attendance() {
                   filter.status
                     ? filter.status
                     : filter.status === ""
-                    ? "ALL"
-                    : ""
+                      ? "ALL"
+                      : ""
                 }
                 placeholder="Pilih Status"
                 onChange={handleStatusChange}
@@ -490,15 +490,15 @@ export default function Attendance() {
                           order.status === "PRESENT"
                             ? "success"
                             : order.status === "LATE"
-                            ? "warning"
-                            : "error"
+                              ? "warning"
+                              : "error"
                         }
                       >
                         {order.status == "PRESENT"
                           ? "Tepat Waktu"
                           : order.status == "LATE"
-                          ? "Terlambat"
-                          : ""}
+                            ? "Terlambat"
+                            : ""}
                       </Badge>
                     </TableCell>
                     <TableCell className="px-6 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
@@ -536,7 +536,7 @@ export default function Attendance() {
                           <select
                             className="h-8 w-12 appearance-none rounded-lg border border-gray-300
                           bg-transparent px-2 py-1 pr-1 text-xs shadow-theme-xs focus:border-brand-300
-                          focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700
+                          focus:outline-hidden focus:ring-3 focus:ring-emerald-600/10 dark:border-gray-700
                           dark:bg-gray-900 dark:text-white/90 dark:focus:border-brand-800
                           text-gray-500 dark:text-gray-400"
                             onChange={(e) =>
@@ -705,15 +705,15 @@ export default function Attendance() {
                               selectedAttendance?.status === "PRESENT"
                                 ? "success"
                                 : selectedAttendance?.status === "LATE"
-                                ? "warning"
-                                : "error"
+                                  ? "warning"
+                                  : "error"
                             }
                           >
                             {selectedAttendance?.status == "PRESENT"
                               ? "Tepat Waktu"
                               : selectedAttendance?.status == "LATE"
-                              ? "Terlambat"
-                              : ""}
+                                ? "Terlambat"
+                                : ""}
                           </Badge>
                         </div>
                       </div>
@@ -742,7 +742,7 @@ export default function Attendance() {
                             <img
                               src={selectedAttendance?.checkinPhoto.replace(
                                 "/upload/",
-                                "/upload/w_500,h_500,c_fill,g_face,f_auto,q_auto/"
+                                "/upload/w_500,h_500,c_fill,g_face,f_auto,q_auto/",
                               )}
                               alt={selectedAttendance?.userFullName}
                               loading="lazy" // Optimasi: Hanya load saat dibutuhkan
@@ -766,7 +766,7 @@ export default function Attendance() {
                             onClick={() =>
                               window.open(
                                 selectedAttendance?.checkinPhoto,
-                                "_blank"
+                                "_blank",
                               )
                             }
                             size="sm"
@@ -785,7 +785,7 @@ export default function Attendance() {
                             <img
                               src={selectedAttendance?.checkoutPhoto.replace(
                                 "/upload/",
-                                "/upload/w_500,h_500,c_fill,g_face,f_auto,q_auto/"
+                                "/upload/w_500,h_500,c_fill,g_face,f_auto,q_auto/",
                               )}
                               alt={selectedAttendance?.userFullName}
                               loading="lazy" // Optimasi: Hanya load saat dibutuhkan
@@ -812,7 +812,7 @@ export default function Attendance() {
                                 selectedAttendance?.checkoutPhoto
                                   ? selectedAttendance.checkoutPhoto
                                   : "",
-                                "_blank"
+                                "_blank",
                               )
                             }
                             size="sm"
@@ -869,7 +869,7 @@ export default function Attendance() {
                             onClick={() =>
                               window.open(
                                 `https://maps.google.com/maps?q=${selectedAttendance?.checkinLat},${selectedAttendance?.checkinLng}`,
-                                "_blank"
+                                "_blank",
                               )
                             }
                             size="sm"
@@ -912,7 +912,7 @@ export default function Attendance() {
                             onClick={() =>
                               window.open(
                                 `https://maps.google.com/maps?q=${selectedAttendance?.checkoutLat},${selectedAttendance?.checkoutLng}`,
-                                "_blank"
+                                "_blank",
                               )
                             }
                             size="sm"
@@ -1041,7 +1041,7 @@ export default function Attendance() {
                 {new Date(
                   selectedAttendance?.createdAt
                     ? selectedAttendance.createdAt
-                    : ""
+                    : "",
                 ).toLocaleDateString("id-ID", {
                   day: "numeric",
                   month: "numeric",
@@ -1053,7 +1053,7 @@ export default function Attendance() {
                 {new Date(
                   selectedAttendance?.updatedAt
                     ? selectedAttendance.updatedAt
-                    : ""
+                    : "",
                 ).toLocaleDateString("id-ID", {
                   day: "numeric",
                   month: "numeric",
@@ -1074,7 +1074,7 @@ export default function Attendance() {
 // Helper function untuk menentukan quick date option yang aktif
 const getActiveQuickDateOption = (
   startDate: string,
-  endDate: string
+  endDate: string,
 ): string => {
   const today = format(new Date(), "yyyy-MM-dd");
 

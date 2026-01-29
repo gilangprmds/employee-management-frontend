@@ -2,16 +2,16 @@
 export interface DashboardStats {
   totalEmployees: number;
   activeEmployees: number;
-  newHiresThisMonth: number;
-  pendingLeaves: number;
-  attritionRate: number;
+  newHiresThisMonth?: number;
+  pendingLeaves?: number;
+  attritionRate?: number;
   avgAttendance: number;
   departmentDistribution: {
     department: string;
     count: number;
     percentage: number;
   }[];
-  recentHires: {
+  recentHires?: {
     id: string;
     name: string;
     position: string;

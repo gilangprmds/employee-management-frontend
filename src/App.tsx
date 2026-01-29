@@ -27,6 +27,7 @@ import RoleManagement from "./pages/RoleManagement";
 import PermissionManagement from "./pages/PermissionManagement";
 import Attendance from "./pages/Attendance";
 import EmployeeDashboard from "./pages/Dashboard/Home2";
+import DepartmentManagement from "./pages/DepartmentManagement";
 
 export default function App() {
   return (
@@ -61,17 +62,12 @@ export default function App() {
             {/* Others */}
             <Route path="/profile" element={<UserProfiles />} />
 
-            <Route path="/manajemen-karyawan" element={<UserManagement />} />
-            <Route
-              path="/manajemen-karyawan/:id"
-              element={<EmployeeProfile />}
-            />
-            <Route
-              path="/manajemen-karyawan/tambah"
-              element={<AddEmployee />}
-            />
+            <Route path="/employee" element={<UserManagement />} />
+            <Route path="/employee/:id" element={<EmployeeProfile />} />
+            <Route path="/employee/add-employee" element={<AddEmployee />} />
 
             <Route path="/attendance" element={<Attendance />} />
+            <Route path="/department" element={<DepartmentManagement />} />
 
             <Route path="/role-permission" element={<RoleManagement />} />
             <Route path="/permission" element={<PermissionManagement />} />

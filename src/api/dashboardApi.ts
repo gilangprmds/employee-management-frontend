@@ -1,24 +1,22 @@
 // api/dashboardApi.ts
-import axios from 'axios';
+import api from './axios';
 import { DashboardStats, AttendanceData, LeaveTypeData } from './dashboardTypes';
-
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080/api';
 
 const dashboardApi = {
   getStats: async (): Promise<DashboardStats> => {
-    const response = await axios.get(`${API_BASE}/dashboard/stats`);
+    const response = await api.get(`/api/dashboard/stats`);
     return response.data;
   },
 
   getAttendanceData: async (year: number = new Date().getFullYear()): Promise<AttendanceData[]> => {
-    const response = await axios.get(`${API_BASE}/dashboard/attendance`, {
+    const response = await api.get(`/api/dashboard/attendance`, {
       params: { year }
     });
     return response.data;
   },
 
   getLeaveDistribution: async (): Promise<LeaveTypeData[]> => {
-    const response = await axios.get(`${API_BASE}/dashboard/leave-distribution`);
+    const response = await api.get(`/api/dashboard/leave-distribution`);
     return response.data;
   }
 };

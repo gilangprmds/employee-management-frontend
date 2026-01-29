@@ -1,8 +1,10 @@
 // import { useState } from "react";
 import { Link } from "react-router";
-import { 
-  // ChevronLeftIcon, 
-  EyeCloseIcon, EyeIcon } from "../../icons";
+import {
+  // ChevronLeftIcon,
+  EyeCloseIcon,
+  EyeIcon,
+} from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 // import Checkbox from "../form/input/Checkbox";
@@ -14,7 +16,7 @@ import { useAuth } from "../../context/AuthContext";
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   // const [isChecked, setIsChecked] = useState(false);
-    const { login } = useAuth();
+  const { login } = useAuth();
   const nav = useNavigate();
 
   const [email, setEmail] = useState<string>("");
@@ -110,10 +112,11 @@ export default function SignInForm() {
                   <Label>
                     email <span className="text-error-500">*</span>{" "}
                   </Label>
-                  <Input 
-                  placeholder="email1"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)} />
+                  <Input
+                    placeholder="email1"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div>
                   <Label>
@@ -147,7 +150,7 @@ export default function SignInForm() {
                   </div>
                   <Link
                     to="/reset-password"
-                    className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                    className="text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-500"
                   >
                     Forgot password?
                   </Link>
@@ -165,7 +168,7 @@ export default function SignInForm() {
                 Don&apos;t have an account? {""}
                 <Link
                   to="/signup"
-                  className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                  className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-500"
                 >
                   Sign Up
                 </Link>

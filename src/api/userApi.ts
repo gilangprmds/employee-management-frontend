@@ -9,7 +9,7 @@ import api from './axios'; // Import instance yang telah dikonfigurasi
  * Interface untuk objek User yang diterima dari backend (data penuh)
  */
 export interface User {
-  id: number
+  id: string
   email: string
   fullName: string
   firstName: string

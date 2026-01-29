@@ -66,9 +66,7 @@ export default function DepartmentStats() {
       colors: ["#fff"],
     },
     tooltip: {
-      y: {
-        formatter: (val) => `${val} employees`,
-      },
+      enabled: false
     },
     responsive: [
       {
@@ -92,7 +90,7 @@ export default function DepartmentStats() {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <BuildingOfficeIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <BuildingOfficeIcon className="w-6 h-6 text-emerald-600 dark:text-emerald-500" />
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white">

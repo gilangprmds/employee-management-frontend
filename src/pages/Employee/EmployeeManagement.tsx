@@ -135,10 +135,10 @@ export default function UserManagement() {
 
   // Dropdown state
 
-  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null);
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 
   // Handler untuk toggle
-  const handleToggleDropdown = (id: number) => {
+  const handleToggleDropdown = (id: string) => {
     // Jika ID yang diklik sudah terbuka, maka tutup (set null)
     // Jika belum, maka buka ID tersebut
     setOpenDropdownId(openDropdownId === id ? null : id);
@@ -155,7 +155,7 @@ export default function UserManagement() {
   }: {
     index: number;
     totalData: number;
-    EmployeeId: number;
+    EmployeeId: string;
     isOpen: boolean; // Diterima dari parent
     onToggle: () => void; // Fungsi untuk memberitahu parent
     onClose: () => void; // Fungsi untuk menutup
@@ -186,7 +186,7 @@ export default function UserManagement() {
           <DropdownItem
             onItemClick={onClose}
             tag="a" // Beritahu komponen untuk merender Link
-            to={`/manajemen-karyawan/${EmployeeId}`} // Path dinamis
+            to={`/employee/${EmployeeId}`} // Path dinamis
             // onClick={() => console.log("View detail", EmployeeId)}
             className="flex items-center gap-2"
           >
@@ -223,12 +223,15 @@ export default function UserManagement() {
         title="Employee Management | Employee Attendance Dashboard"
         description="Employee management page"
       />
-      <PageBreadcrumb pageTitle="Managemen Karyawan" pageCrumb="Managemen Karyawan" />
+      <PageBreadcrumb
+        pageTitle="Employee Management"
+        pageCrumb="Employee Management"
+      />
       {/* <ComponentCard>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-white/[0.05] dark:bg-white/[0.03]">
             <div className="flex items-center">
-              <div className="rounded-full bg-brand-500/10 p-3 text-brand-500">
+              <div className="rounded-full bg-emerald-600/10 p-3 text-emerald-600">
                 <Eye className="w-5 h-5" />
               </div>
               <div className="ml-4">
@@ -294,7 +297,7 @@ export default function UserManagement() {
           size="sm"
           startIcon={<Plus className="w-4 h-4" />}
           className="w-50"
-          onClick={() => (window.location.href = "/manajemen-karyawan/tambah")}
+          onClick={() => (window.location.href = "/employee/add-employee")}
         >
           Tambah Karyawan
         </Button>
@@ -322,8 +325,8 @@ export default function UserManagement() {
                   filter.status
                     ? filter.status
                     : filter.status === ""
-                    ? "ALL"
-                    : ""
+                      ? "ALL"
+                      : ""
                 }
                 placeholder="Pilih Status"
                 onChange={handleStatusChange}
@@ -447,17 +450,16 @@ export default function UserManagement() {
                           order.status === "ACTIVE"
                             ? "success"
                             : order.status === "PENDING"
-                            ? "warning"
-                            : "error"
+                              ? "warning"
+                              : "error"
                         }
                       >
                         {order.status === "ACTIVE"
                           ? "Aktif"
                           : order.status === "PENDING"
-                          ? "Pending"
-                          : "Non-Aktif"}
+                            ? "Pending"
+                            : "Non-Aktif"}
                       </Badge>{" "}
-                      
                     </TableCell>
                     <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                       <EmployeeActions
@@ -470,7 +472,7 @@ export default function UserManagement() {
                         onClose={() => setOpenDropdownId(null)}
                         index={
                           data?.content.findIndex(
-                            (user) => user.id === order.id
+                            (user) => user.id === order.id,
                           ) || 0
                         }
                         totalData={data?.content.length || 0}
@@ -499,7 +501,7 @@ export default function UserManagement() {
                           <select
                             className="h-8 w-12 appearance-none rounded-lg border border-gray-300
                           bg-transparent px-2 py-1 pr-1 text-xs shadow-theme-xs focus:border-brand-300
-                          focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700
+                          focus:outline-hidden focus:ring-3 focus:ring-emerald-600/10 dark:border-gray-700
                           dark:bg-gray-900 dark:text-white/90 dark:focus:border-brand-800
                           text-gray-500 dark:text-gray-400"
                             onChange={(e) =>

@@ -162,11 +162,11 @@ const DepartmentManagement: React.FC = () => {
       
       // Find manager name for display
       const selectedManager = employees.find(emp => emp.id === formData.managerId);
-      const managerData = selectedManager ? {
-        id: selectedManager.id,
-        name: selectedManager.fullName,
-        email: selectedManager.email
-      } : undefined;
+    //   const managerData = selectedManager ? {
+    //     id: selectedManager.id,
+    //     name: selectedManager.fullName,
+    //     email: selectedManager.email
+    //   } : undefined;
 
       if (editingDepartment) {
         await departmentApi.update(editingDepartment.id, formData);
@@ -304,7 +304,10 @@ const DepartmentManagement: React.FC = () => {
 
             {/* Export/Import buttons */}
             <div className="flex gap-2">
-              <PermissionGuard requiredPermissions={["department:export:all"]}>
+              <PermissionGuard
+               requiredRoles={["ADMIN"]}
+            //   requiredPermissions={["department:export:all"]}
+              >
                 <button className="flex items-center gap-2 border border-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition">
                   <FiDownload /> Export
                 </button>
@@ -418,7 +421,8 @@ const DepartmentManagement: React.FC = () => {
                     
                     {/* Action buttons */}
                     <div className="flex gap-1">
-                      <PermissionGuard requiredPermissions={["department:update:all"]}>
+                      <PermissionGuard 
+                      requiredPermissions={["department:update:all"]}>
                         <button 
                           onClick={() => handleOpenEdit(department)}
                           className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
